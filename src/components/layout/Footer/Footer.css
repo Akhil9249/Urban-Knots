@@ -14,9 +14,9 @@
 /* Background Abstract Graphic */
 .footer-graphic-container {
   position: absolute;
-  right: -50px;
-  bottom: -50px;
-  width: 480px;
+  right: -20px;
+  bottom: -60px;
+  width: 780px;
   height: auto;
   pointer-events: none;
   z-index: 1;
@@ -197,6 +197,12 @@ a.contact-link-text:hover {
   color: #6C63FF;
 }
 
+@media (min-width: 768px) {
+  .contact-link-text {
+    white-space: nowrap;
+  }
+}
+
 /* Copyright Bottom Bar */
 .footer-bottom-bar {
   position: relative;
@@ -224,23 +230,23 @@ a.contact-link-text:hover {
 @media (min-width: 992px) {
   .footer-container {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
-    gap: 40px;
+    gap: 5%;
   }
 
   .branding-col {
-    width: 25%;
+    width: 22%;
     flex-shrink: 0;
   }
 
   .links-col {
-    width: 18%;
+    width: 13%;
     flex-shrink: 0;
   }
 
   .contact-col {
-    width: 32%;
+    width: 35%;
     flex-shrink: 0;
   }
 }
@@ -258,7 +264,9 @@ a.contact-link-text:hover {
   }
 
   .footer-graphic-container {
-    width: 380px;
+    width: 650px;
+    right: -15px;
+    bottom: -50px;
   }
 }
 
@@ -278,7 +286,9 @@ a.contact-link-text:hover {
   }
 
   .footer-graphic-container {
-    width: 320px;
+    width: 550px;
+    right: -10px;
+    bottom: -40px;
   }
 }
 
@@ -302,8 +312,8 @@ a.contact-link-text:hover {
   }
 
   .footer-graphic-container {
-    width: 260px;
-    right: -30px;
+    width: 420px;
+    right: -5px;
     bottom: -30px;
     opacity: 0.6;
   }
