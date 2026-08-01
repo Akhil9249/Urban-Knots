@@ -97,7 +97,7 @@ const Contact = () => {
       {/* 1. Hero Section */}
       <section className="contact-hero">
         <div className="contact-hero-image-wrapper">
-          <img src="/images/hero/contact-img.png" alt="Fluid graphic" className="contact-hero-fluid-graphic" />
+          <img src="/images/hero/contact-img-new.png" alt="Fluid graphic" className="contact-hero-fluid-graphic" />
         </div>
         <div className="contact-hero-container">
           <span className="contact-hero-tag">Contact Us</span>

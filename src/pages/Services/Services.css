@@ -140,8 +140,7 @@
   font-weight: 500;
   font-style: normal;
   font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 140%;
   color: #AAAAAA;
   text-align: center;
   max-width: 600px;
@@ -259,13 +258,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90.54deg, #201566 0.46%, #000000 58.99%, #0D0A27 99.9%);
+  background: linear-gradient(90deg, #201566 0%, #08061a 60%, #000000 100%);
   opacity: 0;
   z-index: -1;
   transition: opacity 0.3s ease;
 }
 
-.services-cta-banner:hover::before {
+.services-cta-banner:has(.services-cta-left:hover)::before {
   opacity: 1;
 }
 
@@ -282,19 +281,20 @@
   border-radius: 50%;
   border: 1px solid transparent;
   background: linear-gradient(#0A0720, #0A0720) padding-box,
-              linear-gradient(151.75deg, #17134C 17.47%, #564ED1 59.39%, #1A165C 86.43%) border-box;
+    linear-gradient(151.75deg, #17134C 17.47%, #564ED1 59.39%, #1A165C 86.43%) border-box;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   margin-top: 20px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.services-cta-banner:hover .services-cta-badge {
-  background: linear-gradient(90deg, #201566 0%, #18104B 100%) padding-box,
-              linear-gradient(151.75deg, #17134C 17.47%, #564ED1 59.39%, #1A165C 86.43%) border-box;
+.services-cta-left:hover .services-cta-badge {
+  background: linear-gradient(#201566, #201566) padding-box,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(86, 78, 209, 0.2) 100%) border-box;
+  border: 1px solid transparent;
 }
 
 .services-cta-badge-icon {
@@ -304,7 +304,7 @@
   transition: filter 0.3s ease;
 }
 
-.services-cta-banner:hover .services-cta-badge-icon {
+.services-cta-left:hover .services-cta-badge-icon {
   filter: brightness(0) saturate(100%) invert(41%) sepia(82%) saturate(4156%) hue-rotate(227deg) brightness(102%) contrast(101%);
 }
 
@@ -342,6 +342,9 @@
 }
 
 .services-cta-button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   font-family: 'Switzer', sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -351,24 +354,46 @@
   border-radius: 15px;
   width: 270px;
   height: 68px;
-  padding: 10px 10px 10px 22px;
+  padding: 10px 24px;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.services-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #6C63FF 0%, #A79FFF 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.services-cta-button:hover::before {
+  opacity: 1;
 }
 
 .services-cta-button:hover {
-  background-color: #584feb;
+  box-shadow: 0 0 24px rgba(108, 99, 255, 0.8);
 }
 
 .services-cta-button-icon {
   width: 24px;
   height: 24px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.services-cta-button:hover .services-cta-button-icon {
+  transform: translateX(4px);
 }
 
 /* Responsive Queries */
@@ -427,4 +452,170 @@
     width: 100%;
     justify-content: center;
   }
+}
+
+/* Services CTA Section containing only Newsletter */
+.services-cta-section {
+  width: 100%;
+  background: linear-gradient(264.07deg, #000000 5.12%, #000000 43.64%, #1C0E70 99.07%);
+  color: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 15px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.services-cta-container {
+  width: 100%;
+  max-width: 1282px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width: 992px) {
+  .services-cta-section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 92px;
+    padding-right: 92px;
+  }
+
+  .services-cta-container {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 80px;
+  }
+}
+
+/* Actions Column */
+.services-cta-actions-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .services-cta-actions-column {
+    width: auto;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .services-cta-container {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .services-cta-actions-column {
+    max-width: 100%;
+  }
+}
+
+/* Newsletter Box */
+.services-newsletter-box {
+  width: 100%;
+  max-width: 327px;
+}
+
+.services-newsletter-title {
+  font-family: 'Switzer', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.services-newsletter-subtitle {
+  font-family: 'Switzer', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #DBDBDB;
+  line-height: 24px;
+  margin: 0 0 16px 0;
+  letter-spacing: 0%;
+}
+
+.services-newsletter-form {
+  width: 100%;
+}
+
+.services-input-group {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  box-sizing: border-box;
+}
+
+.services-email-input {
+  width: 100%;
+  height: 100%;
+  background-color: #0b0b0b;
+  border: 1px solid #888888;
+  border-radius: 10px;
+  padding: 10px 50px 10px 22px;
+  box-sizing: border-box;
+  font-family: 'Switzer', sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.services-email-input:focus {
+  border-color: #6C63FF;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.15);
+}
+
+.services-email-input::placeholder {
+  color: #666666;
+}
+
+.services-submit-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: #6C63FF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.services-submit-btn svg {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.3s ease;
+}
+
+.services-submit-btn:hover {
+  color: #5b52e0;
+}
+
+.services-submit-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.services-success-message {
+  font-family: 'Switzer', sans-serif;
+  font-size: 13px;
+  color: #10B981;
+  margin-top: 8px;
+  animation: fadeIn 0.3s ease;
 }

@@ -126,23 +126,30 @@
 /* Carousel Slider */
 .portfolio-slider-outer {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
   position: relative;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+}
+
+.portfolio-slider-outer::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome/Safari */
 }
 
 .portfolio-slider-inner {
   display: flex;
-  width: 200%;
-  /* Two page grids */
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 24px;
+  width: max-content;
+  transition: none;
 }
 
-.portfolio-grid-page {
-  width: 50%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  box-sizing: border-box;
+.project-card img {
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Project Card */
@@ -157,6 +164,8 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
   height: 300px;
   cursor: pointer;
+  flex: 0 0 calc((100% - 48px) / 3);
+  scroll-snap-align: start;
 }
 
 .project-card:hover {
@@ -316,17 +325,18 @@
     height: 285px;
   }
 
-  .portfolio-grid-page {
-    grid-template-columns: repeat(3, 404px);
+  .portfolio-slider-inner {
     gap: 48px;
-    width: 50%;
+    width: max-content;
   }
 
   .project-card {
     width: 404px;
+    flex: 0 0 404px;
     height: 273px;
     transform: rotate(0deg);
     opacity: 1;
+    scroll-snap-align: start;
   }
 
   .project-card-image-box {
@@ -359,9 +369,12 @@
     width: 100%;
   }
 
-  .portfolio-grid-page {
-    grid-template-columns: repeat(3, 1fr);
+  .portfolio-slider-inner {
     gap: 20px;
+  }
+
+  .project-card {
+    flex: 0 0 calc((100% - 40px) / 3);
   }
 }
 
@@ -376,14 +389,12 @@
     font-size: 36px;
   }
 
-  .portfolio-grid-page {
-    grid-template-columns: repeat(2, 1fr);
+  .portfolio-slider-inner {
     gap: 20px;
   }
 
-  /* Hide the 3rd card on tablet for grid spacing */
-  .portfolio-grid-page>.project-card:nth-child(3) {
-    display: none;
+  .project-card {
+    flex: 0 0 calc((100% - 20px) / 2);
   }
 }
 
@@ -396,13 +407,12 @@
     font-size: 28px;
   }
 
-  .portfolio-grid-page {
-    grid-template-columns: 1fr;
+  .portfolio-slider-inner {
     gap: 16px;
   }
 
-  .portfolio-grid-page>.project-card:nth-child(3) {
-    display: flex;
+  .project-card {
+    flex: 0 0 100%;
   }
 
   .project-card {

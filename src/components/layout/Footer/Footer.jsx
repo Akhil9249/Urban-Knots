@@ -7,15 +7,15 @@ const Footer = () => {
     <footer className="footer-section">
       {/* Decorative Overlapping Glass Spheres Graphic */}
       <div className="footer-graphic-container">
-        <img 
-          src={footerGraphic} 
-          alt="Abstract purple 3D spheres background graphic" 
+        <img
+          src={footerGraphic}
+          alt="Abstract purple 3D spheres background graphic"
           className="footer-fluid-graphic"
         />
       </div>
 
       <div className="footer-container">
-        
+
         {/* Column 1: Branding and Social Links */}
         <div className="footer-column branding-col">
           <h2 className="footer-logo">
@@ -26,13 +26,13 @@ const Footer = () => {
           </p>
           <div className="footer-social-links">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
-              <img src="/images/footer/insta.png" alt="Instagram" />
+              <img src="/images/footer/insta.png" alt="Instagram" className="insta-icon-img" />
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
-              <img src="/images/footer/in.png" alt="LinkedIn" />
+              <img src="/images/footer/in.png" alt="LinkedIn" className="in-icon-img" />
             </a>
             <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Behance">
-              <img src="/images/footer/be.png" alt="Behance" />
+              <img src="/images/footer/be.png" alt="Behance" className="be-icon-img" />
             </a>
           </div>
         </div>
@@ -67,7 +67,7 @@ const Footer = () => {
         <div className="footer-column contact-col">
           <h3 className="footer-col-title">Contact</h3>
           <ul className="footer-contact-list">
-            
+
             {/* Email Row */}
             <li className="contact-item">
               <span className="contact-icon-wrapper">
@@ -94,7 +94,7 @@ const Footer = () => {
                 <img src="/images/footer/location.png" alt="Location" />
               </span>
               <span className="contact-link-text">
-                C-29, 3rd Floor, Malabar Gate,<br/> Ram Mohan Road, Kozhikode - 673004
+                C-29, 3rd Floor, Malabar Gate,<br /> Ram Mohan Road, Kozhikode - 673004
               </span>
             </li>
 

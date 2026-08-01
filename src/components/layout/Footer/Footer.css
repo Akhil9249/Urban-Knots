@@ -93,10 +93,23 @@
 }
 
 .social-icon img {
-  width: 20px;
-  height: 20px;
   object-fit: contain;
   transition: opacity 0.3s ease;
+}
+
+.insta-icon-img {
+  width: 27px;
+  height: 27px;
+}
+
+.in-icon-img {
+  width: 19px;
+  height: 20px;
+}
+
+.be-icon-img {
+  width: 26px;
+  height: 26px;
 }
 
 .social-icon:hover {

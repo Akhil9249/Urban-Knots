@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Services.css';
 
 // SVG Diagonal Arrow Icon
@@ -37,7 +37,36 @@ const PaperPlaneIcon = () => (
   </svg>
 );
 
+const ArrowRightIcon = () => (
+  <svg 
+    width="20" 
+    height="20" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="1.5" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    className="arrow-icon"
+  >
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+);
+
 const Services = () => {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 5000);
+    }
+  };
+
   const servicesList = [
     {
       num: "01",
@@ -82,6 +111,7 @@ const Services = () => {
   ];
 
   return (
+    <>
     <div className="services-page">
       {/* Hero Section */}
       <section className="services-hero">
@@ -153,6 +183,45 @@ const Services = () => {
         </div>
       </section>
     </div>
+
+  <section className="services-cta-section" id="cta">
+      <div className="services-cta-container" style={{ justifyContent: 'flex-end' }}>
+        
+        {/* Right Column: Actions (Button & Newsletter) */}
+        <div className="services-cta-actions-column">
+       
+
+          {/* Newsletter Box */}
+          <div className="services-newsletter-box">
+            <h3 className="services-newsletter-title">Newsletter</h3>
+            <p className="services-newsletter-subtitle">
+              Stay updated with our latest<br />work and insights.
+            </p>
+            
+            <form className="services-newsletter-form" onSubmit={handleSubscribe}>
+              <div className="services-input-group">
+                <input 
+                  type="email" 
+                  className="services-email-input" 
+                  placeholder="Enter your email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <button type="submit" className="services-submit-btn" aria-label="Subscribe">
+                  <ArrowRightIcon />
+                </button>
+              </div>
+              {subscribed && (
+                <p className="services-success-message">Thank you for subscribing!</p>
+              )}
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+</>
   );
 };
 

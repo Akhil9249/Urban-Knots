@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './PortfolioPreview.css';
 
 const ViewAllProjectsIcon = () => (
@@ -10,6 +10,79 @@ const ViewAllProjectsIcon = () => (
 
 const PortfolioPreview = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const sliderRef = useRef(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollStart = useRef(0);
+
+  // Disable snap & smooth scroll on drag start
+  const handleMouseDown = (e) => {
+    isDragging.current = true;
+    startX.current = e.pageX - sliderRef.current.offsetLeft;
+    scrollStart.current = sliderRef.current.scrollLeft;
+    
+    // Disable snapping temporarily for free dragging
+    sliderRef.current.style.scrollSnapType = 'none';
+    sliderRef.current.style.scrollBehavior = 'auto';
+    sliderRef.current.style.cursor = 'grabbing';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5; // multiplier for scrolling sensitivity
+    sliderRef.current.scrollLeft = scrollStart.current - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    
+    if (sliderRef.current) {
+      sliderRef.current.style.cursor = 'grab';
+      sliderRef.current.style.scrollSnapType = 'x mandatory';
+      sliderRef.current.style.scrollBehavior = 'smooth';
+
+      // Snap to closest page
+      const scrollLeft = sliderRef.current.scrollLeft;
+      const pageWidth = sliderRef.current.clientWidth;
+      const pageIndex = Math.round(scrollLeft / pageWidth);
+      
+      sliderRef.current.scrollTo({
+        left: pageIndex * pageWidth,
+        behavior: 'smooth'
+      });
+      setCurrentPage(pageIndex);
+    }
+  };
+
+  // Click dot page scrolling
+  const scrollToPage = (pageIndex) => {
+    if (sliderRef.current) {
+      const pageWidth = sliderRef.current.clientWidth;
+      sliderRef.current.scrollTo({
+        left: pageIndex * pageWidth,
+        behavior: 'smooth'
+      });
+      setCurrentPage(pageIndex);
+    }
+  };
+
+  // Native Scroll Listener to update dots when swiping on touch devices
+  const handleScroll = () => {
+    if (sliderRef.current && !isDragging.current) {
+      const scrollLeft = sliderRef.current.scrollLeft;
+      const pageWidth = sliderRef.current.clientWidth;
+      if (pageWidth > 0) {
+        const pageIndex = Math.round(scrollLeft / pageWidth);
+        // Prevent state spam
+        if (pageIndex !== currentPage && pageIndex >= 0 && pageIndex <= 1) {
+          setCurrentPage(pageIndex);
+        }
+      }
+    }
+  };
 
   const projects = [
     // Page 1
@@ -80,40 +153,27 @@ const PortfolioPreview = () => {
         </div>
 
         {/* Carousel Slider Outer Track */}
-        <div className="portfolio-slider-outer">
-          <div 
-            className="portfolio-slider-inner" 
-            style={{ transform: `translateX(-${currentPage * 50}%)` }}
-          >
-            {/* Page 1 Grid */}
-            <div className="portfolio-grid-page">
-              {projects.filter(p => p.page === 0).map((project) => (
-                <div key={project.id} className="project-card">
-                  <div className="project-card-image-box">
-                    <img src={project.image} alt={project.title} className="project-card-img" />
-                  </div>
-                  <div className="project-card-details">
-                    <h3 className="project-card-title">{project.title}</h3>
-                    <p className="project-card-category">{project.category}</p>
-                  </div>
+        <div 
+          className="portfolio-slider-outer"
+          ref={sliderRef}
+          onScroll={handleScroll}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          onMouseLeave={handleMouseUpOrLeave}
+        >
+          <div className="portfolio-slider-inner">
+            {projects.map((project) => (
+              <div key={project.id} className="project-card">
+                <div className="project-card-image-box">
+                  <img src={project.image} alt={project.title} className="project-card-img" />
                 </div>
-              ))}
-            </div>
-
-            {/* Page 2 Grid */}
-            <div className="portfolio-grid-page">
-              {projects.filter(p => p.page === 1).map((project) => (
-                <div key={project.id} className="project-card">
-                  <div className="project-card-image-box">
-                    <img src={project.image} alt={project.title} className="project-card-img" />
-                  </div>
-                  <div className="project-card-details">
-                    <h3 className="project-card-title">{project.title}</h3>
-                    <p className="project-card-category">{project.category}</p>
-                  </div>
+                <div className="project-card-details">
+                  <h3 className="project-card-title">{project.title}</h3>
+                  <p className="project-card-category">{project.category}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -121,12 +181,12 @@ const PortfolioPreview = () => {
         <div className="portfolio-dots">
           <button 
             className={`portfolio-dot ${currentPage === 0 ? 'active' : ''}`}
-            onClick={() => setCurrentPage(0)}
+            onClick={() => scrollToPage(0)}
             aria-label="View page 1"
           />
           <button 
             className={`portfolio-dot ${currentPage === 1 ? 'active' : ''}`}
-            onClick={() => setCurrentPage(1)}
+            onClick={() => scrollToPage(1)}
             aria-label="View page 2"
           />
         </div>
