@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Portfolio.css';
+import productionVideo from '../../assets/videos/dummy.mp4';
+import productionVideoTwo from '../../assets/videos/dummy-two.mp4';
+import productionVideoThree from '../../assets/videos/dummy-three.mp4';
+import arrowLeftIcon from '../../assets/icons/Vector-left.png';
+import arrowRightIcon from '../../assets/icons/Vector-right.png';
 
 // Reusable SVG Icons
 const ArrowRight = () => (
@@ -31,17 +36,29 @@ const CategorySection = ({ title, description, images, isVertical = false }) => 
           <p>{description}</p>
         </div>
         <div className="category-nav">
-          <button className="nav-arrow" aria-label="Previous"><ArrowLeft /></button>
-          <button className="nav-arrow" aria-label="Next"><ArrowRight /></button>
+          <button className="nav-arrow" aria-label="Previous">
+            <img src={arrowLeftIcon} alt="Previous" className="nav-arrow-icon" />
+          </button>
+          <button className="nav-arrow" aria-label="Next">
+            <img src={arrowRightIcon} alt="Next" className="nav-arrow-icon" />
+          </button>
         </div>
       </div>
       <div className={`category-grid ${isVertical ? 'vertical-grid' : ''}`}>
-        {images.map((img, index) => (
-          <div key={index} className="grid-image-container">
-            {/* Replace with actual <img> tag when you have assets */}
-            <div className="image-placeholder">Image {index + 1}</div>
-          </div>
-        ))}
+        {images.map((img, index) => {
+          const isVideo = typeof img === 'string' && (img.endsWith('.mp4') || img.includes('dummy.mp4') || img.includes('video'));
+          return (
+            <div key={index} className={`grid-image-container ${isVideo ? 'grid-video-container' : 'grid-img-container'}`}>
+              {isVideo ? (
+                <video src={img} controls muted loop playsInline className="category-grid-img" style={{ objectFit: 'cover', width: '100%', height: '100%', display: 'block' }} />
+              ) : typeof img === 'string' ? (
+                <img src={img} alt={`${title} ${index + 1}`} className="category-grid-img" />
+              ) : (
+                <div className="image-placeholder">Image {index + 1}</div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
@@ -53,28 +70,44 @@ export default function Portfolio() {
     {
       title: "Print media",
       description: "From brochures and flyers to posters, menus, and marketing collateral, we create print materials that communicate clearly while leaving a lasting impression.",
-      images: [1, 2, 3]
+      images: [
+        "/images/clients/Rectangle-new-two.png",
+        "/images/clients/Rectangle-new.png",
+        "/images/clients/escape.jpg"
+      ]
     },
     {
       title: "Packaging",
       description: "Packaging solutions that balance aesthetics, functionality, and shelf impact, helping products stand out while reinforcing the brand story.",
-      images: [1, 2, 3]
+      images: [
+        "/images/clients/Packaging-one.png",
+        "/images/clients/Packaging-two.png",
+        "/images/clients/Packaging-three.png"
+      ]
     },
     {
       title: "Social media",
       description: "Creative content designed to engage audiences, strengthen brand presence, and drive meaningful interactions across digital platforms.",
-      images: [1, 2, 3]
+      images: [
+        "/images/clients/socail-media-one.png",
+        "/images/clients/social-media-two.png",
+        "/images/clients/social-media-three.png"
+      ]
     },
     {
       title: "Production",
       description: "High-quality visual storytelling tailored to different communication goals. Professional photography that captures your brand with clarity, creativity, and purpose.",
-      images: [1, 2, 3],
+      images: [productionVideo, productionVideoTwo, productionVideoThree],
       isVertical: true
     },
     {
       title: "Photography",
       description: "Professional photography that captures your brand with clarity, creativity, and purpose.",
-      images: [1, 2, 3]
+      images: [
+        "/images/clients/photography-one.jpg",
+        "/images/clients/photography-two.jpg",
+        "/images/clients/photography-three.jpg"
+      ]
     }
   ];
 
@@ -105,14 +138,13 @@ export default function Portfolio() {
 
         <section className="brand-identity-feature">
           <div className="feature-image">
-             {/* Replace with actual image */}
-             <div className="image-placeholder">Brand Identity Image</div>
+            <img src="/images/clients/Rectangle.png" alt="Brand Identity Showcase" className="brand-identity-img" />
           </div>
           <div className="feature-content">
             <h2>Brand Identity</h2>
             <p>Strategic brand identities that build recognition, trust, and lasting<br/>connections through distinctive visual systems, consistent messaging<br/>and purposeful design.</p>
             <Link to="/contact" className="btn-talk btn-solid-talk-dark">
-              View All Projects <ArrowRight />
+              View All Projects <img src="/images/clients/Vector.png" alt="Arrow" className="btn-talk-icon" />
             </Link>
           </div>
         </section>

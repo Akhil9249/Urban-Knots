@@ -94,7 +94,7 @@ const Footer = () => {
                 <img src="/images/footer/location.png" alt="Location" />
               </span>
               <span className="contact-link-text">
-                C-29, 3rd Floor, Malabar Gate, Ram Mohan Road, Kozhikode - 673004
+                C-29, 3rd Floor, Malabar Gate,<br/> Ram Mohan Road, Kozhikode - 673004
               </span>
             </li>
 

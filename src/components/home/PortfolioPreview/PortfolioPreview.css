@@ -68,6 +68,9 @@
 
 /* View All Projects Button */
 .view-all-projects-btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,12 +92,30 @@
   height: 68px;
 }
 
+.view-all-projects-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #090909 0%, #090909 25%, #666666 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.view-all-projects-btn:hover::before {
+  opacity: 1;
+}
+
 .view-all-projects-btn:hover {
-  background-color: #222222;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-arrow-icon {
+  width: 34px;
+  height: 34px;
   transition: transform 0.3s ease;
 }
 

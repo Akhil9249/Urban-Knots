@@ -67,7 +67,7 @@ const TestimonialsFAQ = () => {
 
   // State Management
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [openFaq, setOpenFaq] = useState(0); // Open the first FAQ by default
+  const [openFaq, setOpenFaq] = useState(null);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);

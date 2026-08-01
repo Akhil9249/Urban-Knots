@@ -142,6 +142,9 @@
 
 /* Pill Button */
 .service-preview-explore-btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,9 +164,25 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.service-preview-explore-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #090909 0%, #090909 25%, #666666 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-preview-explore-btn:hover::before {
+  opacity: 1;
+}
+
 .service-preview-explore-btn:hover {
-  background-color: #222222;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service-preview-btn-arrow-icon {

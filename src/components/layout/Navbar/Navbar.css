@@ -55,7 +55,7 @@ body {
   text-decoration: none;
 }
 
-.brand-light {
+.navbar-brand-light {
   font-family: 'Urbanist', sans-serif;
   font-weight: 300;
   font-size: 24px;
@@ -82,6 +82,7 @@ body {
 }
 
 .navbar-links a {
+  position: relative;
   color: #ffffff;
   text-decoration: none;
   font-family: 'Switzer', sans-serif;
@@ -89,11 +90,37 @@ body {
   font-weight: 400;
   line-height: 21px;
   letter-spacing: 0%;
-  transition: opacity 0.2s ease;
+  transition: color 0.3s ease;
+  padding-bottom: 6px;
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: #6C63FF;
+  border-radius: 2px;
+  transition: transform 0.3s ease;
 }
 
 .navbar-links a:hover {
-  opacity: 0.7;
+  color: #6C63FF;
+}
+
+.navbar-links a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navbar-links a.active {
+  color: #6C63FF;
+}
+
+.navbar-links a.active::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 /* Right side: Call to action */
@@ -104,7 +131,7 @@ body {
 }
 
 /* Pill-shaped button */
-.btn-talk {
+.navbar-btn-talk {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -127,13 +154,13 @@ body {
   text-decoration: none;
 }
 
-.btn-talk:hover {
+.navbar-btn-talk:hover {
   border-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Circular icon container inside the button */
-.icon-circle {
+.navbar-icon-circle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,8 +172,13 @@ body {
   transition: border-color 0.3s ease;
 }
 
-.btn-talk:hover .icon-circle {
+.navbar-btn-talk:hover .navbar-icon-circle {
   border-color: #ffffff;
+}
+
+/* Base close button - hidden on desktop */
+.navbar-close-btn {
+  display: none;
 }
 
 /* ==================== Mobile Navigation & Hamburger Menu ==================== */
@@ -164,7 +196,7 @@ body {
   outline: none;
 }
 
-.hamburger-bar {
+.navbar-hamburger-bar {
   width: 100%;
   height: 2px;
   background-color: #ffffff;
@@ -172,16 +204,16 @@ body {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbar-toggle.active .hamburger-bar:nth-child(1) {
+.navbar-toggle.navbar-active .navbar-hamburger-bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
 
-.navbar-toggle.active .hamburger-bar:nth-child(2) {
+.navbar-toggle.navbar-active .navbar-hamburger-bar:nth-child(2) {
   opacity: 0;
   transform: translateX(-10px);
 }
 
-.navbar-toggle.active .hamburger-bar:nth-child(3) {
+.navbar-toggle.navbar-active .navbar-hamburger-bar:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
@@ -206,7 +238,7 @@ body {
     z-index: 101;
   }
 
-  .brand-light {
+  .navbar-brand-light {
     font-size: 20px;
     line-height: 100%;
   }
@@ -222,9 +254,9 @@ body {
     width: 320px;
     max-width: 85%;
     height: 100vh;
-    background-color: rgba(5, 5, 5, 0.98);
-    backdrop-filter: blur(12px);
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, rgba(15, 10, 30, 0.98) 0%, rgba(5, 5, 5, 0.99) 100%);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid rgba(108, 99, 255, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -236,8 +268,29 @@ body {
     z-index: 100;
   }
 
-  .navbar-nav.open {
+  .navbar-nav.navbar-open {
     right: 0;
+  }
+
+  .navbar-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-close-btn:hover {
+    color: #6C63FF;
+    background-color: rgba(108, 99, 255, 0.1);
   }
 
   .navbar-links {
@@ -252,12 +305,28 @@ body {
   .navbar-links a {
     font-size: 22px;
     line-height: 130%;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-links a:hover {
+    color: #6C63FF;
+    opacity: 1;
   }
 
   .navbar-mobile-action {
     display: flex;
     width: 100%;
     justify-content: center;
+  }
+
+  .navbar-mobile-action .navbar-btn-talk {
+    border-color: rgba(108, 99, 255, 0.4);
+    background-color: rgba(108, 99, 255, 0.05);
+  }
+
+  .navbar-mobile-action .navbar-btn-talk:hover {
+    border-color: #6C63FF;
+    background-color: rgba(108, 99, 255, 0.1);
   }
 
   .navbar-action {

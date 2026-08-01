@@ -110,25 +110,47 @@
 }
 
 .btn-primary {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   width: 327px;
   background-color: #6C63FF;
   color: #ffffff;
   border: none;
 }
 
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #6C63FF 0%, #A79FFF 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
 .btn-primary:hover {
-  background-color: #5b52e0;
+  box-shadow: 0 0 24px rgba(108, 99, 255, 0.8);
 }
 
 .btn-secondary {
   width: 262px;
   background-color: transparent;
   color: #ffffff;
-  border: 1px solid #FFFFFF;
+  border: 1.5px solid #FFFFFF;
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: transparent;
+  color: #6C63FF;
+  border-color: #6C63FF;
 }
 
 .arrow-icon {
@@ -168,12 +190,12 @@
 .divider-line {
   position: relative;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (min-width: 992px) {
   .divider-line {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -203,7 +225,7 @@
 
 .brands-logo-strip {
   overflow: hidden;
-  padding: 1.5rem 0;
+  padding: 0.8rem 0;
   box-sizing: border-box;
   width: 100%;
 }
@@ -214,7 +236,7 @@
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
   }
 }
 
@@ -222,7 +244,6 @@
   display: flex;
   align-items: center;
   width: max-content;
-  gap: 120px;
   animation: scrollMarquee 30s linear infinite;
 }
 
@@ -244,13 +265,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  height: 70px;
+  margin: 0 60px;
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
 
 .brand-logo-container:hover {
   transform: translateY(-2px);
+}
+
+.brand-logo-img {
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.brand-logo-img:hover {
+  opacity: 1;
 }
 
 /* Stylized Brand Logo Components */

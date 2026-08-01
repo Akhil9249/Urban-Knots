@@ -58,6 +58,9 @@
 
 /* Main CTA Button */
 .cta-main-btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,7 +69,7 @@
   color: #ffffff;
   border: none;
   border-radius: 15px;
-  padding: 10px 10px 10px 22px;
+  padding: 10px 24px;
   font-family: 'Switzer', sans-serif;
   font-size: 20px;
   font-weight: 500;
@@ -79,9 +82,25 @@
   height: 68px;
 }
 
+.cta-main-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #6C63FF 0%, #A79FFF 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cta-main-btn:hover::before {
+  opacity: 1;
+}
+
 .cta-main-btn:hover {
-  background-color: #5b52e0;
-  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
+  box-shadow: 0 0 24px rgba(108, 99, 255, 0.8);
 }
 
 .cta-main-btn .arrow-icon {

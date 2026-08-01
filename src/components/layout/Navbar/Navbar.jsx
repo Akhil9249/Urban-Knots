@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -17,42 +17,59 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand" onClick={closeMenu}>
-          Urban <span className="brand-light">Knots</span>
+          Urban <span className="navbar-brand-light">Knots</span>
         </Link>
-        
+
         {/* Hamburger Menu Toggle Button */}
-        <button 
-          className={`navbar-toggle ${menuOpen ? 'active' : ''}`} 
+        <button
+          className={`navbar-toggle ${menuOpen ? 'navbar-active' : ''}`}
           onClick={toggleMenu}
           aria-label="Toggle Navigation Menu"
           aria-expanded={menuOpen}
         >
-          <span className="hamburger-bar"></span>
-          <span className="hamburger-bar"></span>
-          <span className="hamburger-bar"></span>
+          <span className="navbar-hamburger-bar"></span>
+          <span className="navbar-hamburger-bar"></span>
+          <span className="navbar-hamburger-bar"></span>
         </button>
 
-        <nav className={`navbar-nav ${menuOpen ? 'open' : ''}`}>
+        <nav className={`navbar-nav ${menuOpen ? 'navbar-open' : ''}`}>
+          {/* Mobile Close Button */}
+          <button className="navbar-close-btn" onClick={closeMenu} aria-label="Close Menu">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
           <ul className="navbar-links">
-            <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-            <li><Link to="/portfolio" onClick={closeMenu}>Portfolio</Link></li>
-            <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
-            <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+            <li><NavLink to="/" onClick={closeMenu} end>Home</NavLink></li>
+            <li><NavLink to="/portfolio" onClick={closeMenu}>Portfolio</NavLink></li>
+            <li><NavLink to="/services" onClick={closeMenu}>Services</NavLink></li>
+            <li><NavLink to="/contact" onClick={closeMenu}>Contact</NavLink></li>
           </ul>
-          
+
           {/* Mobile Action inside menu drawer */}
           <div className="navbar-mobile-action">
-            <Link to="/contact" className="btn-talk" onClick={closeMenu}>
+            <Link to="/contact" className="navbar-btn-talk" onClick={closeMenu}>
               Let's Talk
-              <span className="icon-circle">
-                <svg 
-                  width="18" 
-                  height="18" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5" 
-                  strokeLinecap="round" 
+              <span className="navbar-icon-circle">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 >
                   <path d="M5 12h14" />
@@ -65,17 +82,17 @@ const Navbar = () => {
 
         {/* Desktop Action */}
         <div className="navbar-action">
-          <Link to="/contact" className="btn-talk">
+          <Link to="/contact" className="navbar-btn-talk">
             Let's Talk
-            <span className="icon-circle">
-              <svg 
-                width="18" 
-                height="18" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                strokeLinecap="round" 
+            <span className="navbar-icon-circle">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               >
                 <path d="M5 12h14" />

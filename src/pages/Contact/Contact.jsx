@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import sendIcon from '../../assets/icons/lsicon_send-filled.png';
 
 // SVG Icons
 const MapPinIcon = () => (
@@ -52,17 +53,42 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting Contact Form:', formData);
-    alert('Thank you for reaching out! We will get back to you shortly.');
-    setFormData({
-      fullName: '',
-      email: '',
-      phoneNumber: '',
-      company: '',
-      projectDetails: ''
-    });
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/akhilcv430@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          _subject: "New Project Inquiry - Urban Knots",
+          "Full Name": formData.fullName,
+          "Email Address": formData.email,
+          "Phone Number": formData.phoneNumber,
+          "Company Name": formData.company || "N/A",
+          "Project Details": formData.projectDetails
+        })
+      });
+      
+      if (response.ok) {
+        alert('Thank you for reaching out! We will get back to you shortly.');
+        setFormData({
+          fullName: '',
+          email: '',
+          phoneNumber: '',
+          company: '',
+          projectDetails: ''
+        });
+      } else {
+        alert('There was a problem submitting your form. Please try again.');
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert('There was a problem submitting your form. Please try again.');
+    }
   };
 
   return (
@@ -94,57 +120,57 @@ const Contact = () => {
           <div className="contact-info-container">
             
             <div className="contact-info-card">
-              <div className="contact-info-icon-wrapper">
-                <MapPinIcon />
-              </div>
-              <div className="contact-info-content">
+              <div className="contact-info-card-header">
+                <div className="contact-info-icon-wrapper">
+                  <MapPinIcon />
+                </div>
                 <h3 className="contact-info-title">Location</h3>
-                <p className="contact-info-text">
-                  C-29, 3rd Floor, Malabar Gate,<br />
-                  Ram Mohan Road, Kozhikode<br />
-                  Kerala - 673004
-                </p>
               </div>
+              <p className="contact-info-text">
+                C-29, 3rd Floor, Malabar Gate,<br />
+                Ram Mohan Road, Kozhikode<br />
+                Kerala - 673004
+              </p>
             </div>
 
             <div className="contact-info-card">
-              <div className="contact-info-icon-wrapper">
-                <MailIcon />
-              </div>
-              <div className="contact-info-content">
+              <div className="contact-info-card-header">
+                <div className="contact-info-icon-wrapper">
+                  <MailIcon />
+                </div>
                 <h3 className="contact-info-title">Email</h3>
-                <p className="contact-info-text">
-                  <a href="mailto:urbanknotsllp@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
-                    urbanknotsllp@gmail.com
-                  </a>
-                </p>
               </div>
+              <p className="contact-info-text">
+                <a href="mailto:urbanknotsllp@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  urbanknotsllp@gmail.com
+                </a>
+              </p>
             </div>
 
             <div className="contact-info-card">
-              <div className="contact-info-icon-wrapper">
-                <PhoneIcon />
-              </div>
-              <div className="contact-info-content">
+              <div className="contact-info-card-header">
+                <div className="contact-info-icon-wrapper">
+                  <PhoneIcon />
+                </div>
                 <h3 className="contact-info-title">Phone</h3>
-                <p className="contact-info-text">
-                  +91 8129 185 151<br />
-                  +91 8281 919 151
-                </p>
               </div>
+              <p className="contact-info-text">
+                +91 8129 185 151<br />
+                +91 8281 919 151
+              </p>
             </div>
 
             <div className="contact-info-card">
-              <div className="contact-info-icon-wrapper">
-                <ClockIcon />
-              </div>
-              <div className="contact-info-content">
+              <div className="contact-info-card-header">
+                <div className="contact-info-icon-wrapper">
+                  <ClockIcon />
+                </div>
                 <h3 className="contact-info-title">Working Hours</h3>
-                <p className="contact-info-text">
-                  Monday - Saturday<br />
-                  10:00 AM - 6:00 PM
-                </p>
               </div>
+              <p className="contact-info-text">
+                Monday - Saturday<br />
+                10:00 AM - 6:00 PM
+              </p>
             </div>
 
           </div>
@@ -221,7 +247,7 @@ const Contact = () => {
 
               <div className="contact-form-submit-container">
                 <button type="submit" className="contact-form-submit-btn">
-                  Send Message <PaperPlaneIcon />
+                  Send Message <img src={sendIcon} alt="Send" className="contact-form-submit-icon" />
                 </button>
               </div>
             </form>
@@ -233,14 +259,14 @@ const Contact = () => {
           <div className="contact-cta-banner">
             <div className="contact-cta-left">
               <span className="contact-cta-tag">Let's Work Together</span>
-              <h2 className="contact-cta-title">Ready to Start Your Project?</h2>
+              <h2 className="contact-cta-title">Ready to Start Your<br />Project?</h2>
               <p className="contact-cta-desc">
                 Whether you need branding, a website, creative content, or digital marketing, Urban Knots is your creative partner from idea to execution.
               </p>
             </div>
             <div className="contact-cta-right">
               <button className="contact-cta-btn" onClick={() => window.scrollTo({ top: document.querySelector('.contact-form-section').offsetTop, behavior: 'smooth' })}>
-                Start Your Project <span className="contact-cta-btn-arrow">&rarr;</span>
+                Start Your Project <img src="/images/clients/Vector.png" alt="Arrow" className="contact-cta-btn-icon" />
               </button>
             </div>
           </div>
