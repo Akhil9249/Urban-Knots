@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
@@ -33,10 +34,10 @@ const Hero = () => {
               Let's Build Your Brand
               <ArrowRightIcon />
             </button>
-            <button className="btn btn-secondary">
+            <Link to="/portfolio" className="btn btn-secondary">
               View Our Work
               <ArrowRightIcon />
-            </button>
+            </Link>
           </div>
         </div>
 

@@ -155,8 +155,9 @@ body {
 }
 
 .navbar-btn-talk:hover {
-  border-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.05);
+  border-color: #6C63FF;
+  background-color: #6C63FF;
+  color: #ffffff;
 }
 
 /* Circular icon container inside the button */

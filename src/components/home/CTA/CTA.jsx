@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './CTA.css';
 
 // SVG Arrow Right Icon
@@ -50,10 +51,10 @@ const CTA = () => {
         {/* Right Column: Actions (Button & Newsletter) */}
         <div className="cta-actions-column">
           {/* Main CTA Button */}
-          <button className="cta-main-btn">
+          <Link to="/contact" className="cta-main-btn">
             Let's Start Your Project
             <ArrowRightIcon />
-          </button>
+          </Link>
 
           {/* Newsletter Box */}
           <div className="cta-newsletter-box">

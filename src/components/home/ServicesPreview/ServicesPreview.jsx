@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ServicesPreview.css';
 
 // Custom SVG Icons to match Figma designs closely
@@ -112,7 +113,7 @@ const ServicesPreview = () => {
           </div>
           <div className="service-preview-header-right">
             <p className="service-preview-header-description">Where creativity meets purpose, and every<br />idea is designed to leave a lasting impression.</p>
-            <button className="service-preview-explore-btn">
+            <Link to="/services" className="service-preview-explore-btn">
               Explore All Services
               <svg
                 width="34"
@@ -128,7 +129,7 @@ const ServicesPreview = () => {
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
 

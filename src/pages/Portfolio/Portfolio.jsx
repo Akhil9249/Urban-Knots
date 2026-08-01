@@ -33,7 +33,7 @@ const CategorySection = ({ title, description, images, isVertical = false }) => 
       <div className="category-header">
         <div className="category-text">
           <h2>{title}</h2>
-          <p>{description}</p>
+          <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
         </div>
         <div className="category-nav">
           <button className="nav-arrow" aria-label="Previous">
@@ -69,7 +69,7 @@ export default function Portfolio() {
   const categories = [
     {
       title: "Print media",
-      description: "From brochures and flyers to posters, menus, and marketing collateral, we create print materials that communicate clearly while leaving a lasting impression.",
+      description: "From brochures and flyers to posters, menus, and marketing collateral,\nwe create print materials that communicate clearly while leaving a\nlasting impression.",
       images: [
         "/images/clients/Rectangle-new-two.png",
         "/images/clients/Rectangle-new.png",
@@ -78,7 +78,7 @@ export default function Portfolio() {
     },
     {
       title: "Packaging",
-      description: "Packaging solutions that balance aesthetics, functionality, and shelf impact, helping products stand out while reinforcing the brand story.",
+      description: "Packaging solutions that balance aesthetics, functionality, and shelf \nimpact,helping products stand out while reinforcing the brand story.",
       images: [
         "/images/clients/Packaging-one.png",
         "/images/clients/Packaging-two.png",
@@ -87,7 +87,7 @@ export default function Portfolio() {
     },
     {
       title: "Social media",
-      description: "Creative content designed to engage audiences, strengthen brand presence, and drive meaningful interactions across digital platforms.",
+      description: "Creative content designed to engage audiences, strengthen brand\npresence, and drive meaningful interactions across digital platforms.",
       images: [
         "/images/clients/socail-media-one.png",
         "/images/clients/social-media-two.png",
@@ -96,13 +96,13 @@ export default function Portfolio() {
     },
     {
       title: "Production",
-      description: "High-quality visual storytelling tailored to different communication goals. Professional photography that captures your brand with clarity, creativity, and purpose.",
+      description: "High-quality visual storytelling tailored to different communication goals.\nProfessional photography that captures your brand with clarity,\ncreativity, and purpose.",
       images: [productionVideo, productionVideoTwo, productionVideoThree],
       isVertical: true
     },
     {
       title: "Photography",
-      description: "Professional photography that captures your brand with clarity, creativity, and purpose.",
+      description: "Professional photography that captures your brand with clarity, creativity,\nand purpose.",
       images: [
         "/images/clients/photography-one.jpg",
         "/images/clients/photography-two.jpg",
@@ -143,7 +143,7 @@ export default function Portfolio() {
           <div className="feature-content">
             <h2>Brand Identity</h2>
             <p>Strategic brand identities that build recognition, trust, and lasting<br/>connections through distinctive visual systems, consistent messaging<br/>and purposeful design.</p>
-            <Link to="/contact" className="btn-talk btn-solid-talk-dark">
+            <Link to="/branding" className="btn-talk btn-solid-talk-dark">
               View All Projects <img src="/images/clients/Vector.png" alt="Arrow" className="btn-talk-icon" />
             </Link>
           </div>
