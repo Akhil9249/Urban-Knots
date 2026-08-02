@@ -177,16 +177,11 @@ body {
   border-color: #ffffff;
 }
 
-/* Base close button - hidden on desktop */
-.navbar-close-btn {
-  display: none;
-}
 
 /* ==================== Mobile Navigation & Hamburger Menu ==================== */
 .navbar-toggle {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
+  position: relative;
   width: 28px;
   height: 18px;
   background: transparent;
@@ -198,11 +193,25 @@ body {
 }
 
 .navbar-hamburger-bar {
+  position: absolute;
+  left: 0;
   width: 100%;
   height: 2px;
   background-color: #ffffff;
   border-radius: 2px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-hamburger-bar:nth-child(1) {
+  top: 0;
+}
+
+.navbar-hamburger-bar:nth-child(2) {
+  top: 8px;
+}
+
+.navbar-hamburger-bar:nth-child(3) {
+  top: 16px;
 }
 
 .navbar-toggle.navbar-active .navbar-hamburger-bar:nth-child(1) {
@@ -245,7 +254,7 @@ body {
   }
 
   .navbar-toggle {
-    display: flex;
+    display: block;
   }
 
   .navbar-nav {
@@ -273,26 +282,6 @@ body {
     right: 0;
   }
 
-  .navbar-close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-  }
-
-  .navbar-close-btn:hover {
-    color: #6C63FF;
-    background-color: rgba(108, 99, 255, 0.1);
-  }
 
   .navbar-links {
     flex-direction: column;
@@ -332,5 +321,74 @@ body {
 
   .navbar-action {
     display: none;
+  }
+}
+
+/* Tablet / Medium Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    height: 72px;
+  }
+
+  .navbar-brand,
+  .navbar-brand-light {
+    font-size: 18px;
+  }
+
+  .navbar-links a {
+    font-size: 20px;
+  }
+
+  .navbar-mobile-action .navbar-btn-talk {
+    width: 170px;
+    height: 52px;
+    font-size: 20px;
+    line-height: 26px;
+    padding: 8px 8px 8px 14px;
+  }
+
+  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle {
+    width: 34px;
+    height: 34px;
+  }
+
+  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .navbar-brand,
+  .navbar-brand-light {
+    font-size: 16px;
+  }
+
+  .navbar-links a {
+    font-size: 18px;
+  }
+
+  .navbar-mobile-action .navbar-btn-talk {
+    width: 146px;
+    height: 44px;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 6px 6px 6px 12px;
+  }
+
+  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle svg {
+    width: 12px;
+    height: 12px;
   }
 }
