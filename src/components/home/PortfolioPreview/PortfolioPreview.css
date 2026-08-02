@@ -394,7 +394,7 @@
   }
 
   .project-card {
-    flex: 0 0 calc((100% - 20px) / 2);
+    flex: 0 0 calc((100vw - 40px - 20px) / 2);
   }
 }
 
@@ -412,10 +412,7 @@
   }
 
   .project-card {
-    flex: 0 0 100%;
-  }
-
-  .project-card {
+    flex: 0 0 calc(100vw - 32px);
     height: 280px;
   }
 

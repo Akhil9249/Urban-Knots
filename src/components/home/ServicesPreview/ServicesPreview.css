@@ -328,6 +328,18 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
+
+  .service-preview-card {
+    width: 100%;
+  }
+
+  .service-preview-card-title {
+    width: 100%;
+  }
+
+  .service-preview-card-divider {
+    width: calc(100% - 44px);
+  }
 }
 
 @media (max-width: 991px) {
