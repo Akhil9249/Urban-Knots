@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Portfolio.css';
-import productionVideo from '../../assets/videos/dummy.mp4';
-import productionVideoTwo from '../../assets/videos/dummy-two.mp4';
-import productionVideoThree from '../../assets/videos/dummy-three.mp4';
+import productionVideo from '../../assets/videos/Reel 01.mp4';
+import productionVideoTwo from '../../assets/videos/Reel02.mp4';
+import productionVideoThree from '../../assets/videos/Reels 03.mp4';
 import arrowLeftIcon from '../../assets/icons/Vector-left.png';
 import arrowRightIcon from '../../assets/icons/Vector-right.png';
 
@@ -28,6 +28,36 @@ const ArrowDown = () => (
 
 // Reusable Component for Image Grid Sections (Print, Packaging, etc.)
 const CategorySection = ({ title, description, images, isVertical = false }) => {
+  const gridRef = React.useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = React.useState(false);
+  const [canScrollRight, setCanScrollRight] = React.useState(false);
+
+  const checkScroll = () => {
+    if (gridRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = gridRef.current;
+      setCanScrollLeft(scrollLeft > 5);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 5);
+    }
+  };
+
+  React.useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, [images]);
+
+  const scroll = (direction) => {
+    if (gridRef.current) {
+      const container = gridRef.current;
+      const scrollAmount = container.clientWidth * 0.8;
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <section className="category-section">
       <div className="category-header">
@@ -36,17 +66,31 @@ const CategorySection = ({ title, description, images, isVertical = false }) => 
           <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
         </div>
         <div className="category-nav">
-          <button className="nav-arrow" aria-label="Previous">
+          <button 
+            className="nav-arrow" 
+            aria-label="Previous" 
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+          >
             <img src={arrowLeftIcon} alt="Previous" className="nav-arrow-icon" />
           </button>
-          <button className="nav-arrow" aria-label="Next">
+          <button 
+            className="nav-arrow" 
+            aria-label="Next" 
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+          >
             <img src={arrowRightIcon} alt="Next" className="nav-arrow-icon" />
           </button>
         </div>
       </div>
-      <div className={`category-grid ${isVertical ? 'vertical-grid' : ''}`}>
+      <div 
+        ref={gridRef} 
+        className={`category-grid ${isVertical ? 'vertical-grid' : ''}`}
+        onScroll={checkScroll}
+      >
         {images.map((img, index) => {
-          const isVideo = typeof img === 'string' && (img.endsWith('.mp4') || img.includes('dummy.mp4') || img.includes('video'));
+          const isVideo = typeof img === 'string' && (img.endsWith('.mp4') || img.includes('dummy.mp4') || img.includes('video') || img.includes('Reel'));
           return (
             <div key={index} className={`grid-image-container ${isVideo ? 'grid-video-container' : 'grid-img-container'}`}>
               {isVideo ? (
@@ -73,7 +117,9 @@ export default function Portfolio() {
       images: [
         "/images/clients/Rectangle-new-two.png",
         "/images/clients/Rectangle-new.png",
-        "/images/clients/escape.jpg"
+        "/images/clients/escape.jpg",
+        "/images/clients/Rectangle-new-three.jpg",
+        "/images/clients/Rectangle-new-four.jpg"
       ]
     },
     {
@@ -82,7 +128,9 @@ export default function Portfolio() {
       images: [
         "/images/clients/Packaging-one.png",
         "/images/clients/Packaging-two.png",
-        "/images/clients/Packaging-three.png"
+        "/images/clients/Packaging-three.png",
+        "/images/clients/Packaging-four.jpg",
+        "/images/clients/Packaging-five.jpg"
       ]
     },
     {
@@ -91,7 +139,12 @@ export default function Portfolio() {
       images: [
         "/images/clients/socail-media-one.png",
         "/images/clients/social-media-two.png",
-        "/images/clients/social-media-three.png"
+        "/images/clients/social-media-three.png",
+        "/images/clients/social-media-four.jpg",
+        "/images/clients/social-media-five.jpg",
+        "/images/clients/social-media-six.jpg",
+        "/images/clients/social-media-seven.jpg",
+        "/images/clients/social-media-eight.jpg"
       ]
     },
     {
@@ -106,7 +159,13 @@ export default function Portfolio() {
       images: [
         "/images/clients/photography-one.jpg",
         "/images/clients/photography-two.jpg",
-        "/images/clients/photography-three.jpg"
+        "/images/clients/photography-three.jpg",
+        "/images/clients/photography-four.jpg",
+        "/images/clients/photography-five.jpg",
+        "/images/clients/photography-six.jpg",
+        "/images/clients/photography-seven.jpg",
+        "/images/clients/photography-eight.jpg",
+        "/images/clients/photography-nine.jpg"
       ]
     }
   ];
@@ -119,10 +178,15 @@ export default function Portfolio() {
         <div className="hero-content">
           <span className="subtitle-blue">OUR WORK</span>
           <h1>Our Recent Projects</h1>
-          <p>Every project is an opportunity to solve a problem, build<br/>a brand, and create meaningful digital experiences.<br/>Here's a selection of our recent work.</p>
+          <p>Every project is an opportunity to solve a problem, build <br/>a brand, and create meaningful digital experiences. <br/>Here's a selection of our recent work.</p>
         </div>
 
-        <div className="scroll-indicator">
+        <div className="scroll-indicator" onClick={() => {
+          const introSection = document.querySelector('.showcase-intro');
+          if (introSection) {
+            introSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}>
           <span>Explore Our Work</span>
           <ArrowDown />
         </div>
@@ -133,7 +197,7 @@ export default function Portfolio() {
         <section className="showcase-intro">
           <span className="subtitle-blue">LATEST WORKS</span>
           <h2>Creative Showcase</h2>
-          <p>Explore a curated collection of work where creativity meets strategy. Every project is thoughtfully<br/>crafted to solve business challenges, build memorable brands, and create meaningful experiences<br/>across digital and print.</p>
+          <p>Explore a curated collection of work where creativity meets strategy. Every project is thoughtfully <br/>crafted to solve business challenges, build memorable brands, and create meaningful experiences <br/>across digital and print.</p>
         </section>
 
         <section className="brand-identity-feature">
@@ -142,7 +206,7 @@ export default function Portfolio() {
           </div>
           <div className="feature-content">
             <h2>Brand Identity</h2>
-            <p>Strategic brand identities that build recognition, trust, and lasting<br/>connections through distinctive visual systems, consistent messaging<br/>and purposeful design.</p>
+            <p>Strategic brand identities that build recognition, trust, and lasting <br/>connections through distinctive visual systems, consistent messaging <br/>and purposeful design.</p>
             <Link to="/branding" className="btn-talk btn-solid-talk-dark">
               View All Projects <img src="/images/clients/Vector.png" alt="Arrow" className="btn-talk-icon" />
             </Link>
@@ -164,8 +228,8 @@ export default function Portfolio() {
       {/* 4. CALL TO ACTION */}
       <section className="portfolio-cta-section">
         <span className="subtitle-blue">HAVE A PROJECT IN MIND ?</span>
-        <h2>Ready to Build<br/>Something Amazing?</h2>
-        <p>Whether you're launching a startup, scaling your business, or refreshing your brand,<br/>we're here to create meaningful experiences that leave a lasting impression.</p>
+        <h2>Ready to Build <br/>Something Amazing?</h2>
+        <p>Whether you're launching a startup, scaling your business, or refreshing your brand, <br/>we're here to create meaningful experiences that leave a lasting impression.</p>
         <Link to="/contact" className="btn-outline-dark">
           Start Your Project <ArrowRight />
         </Link>

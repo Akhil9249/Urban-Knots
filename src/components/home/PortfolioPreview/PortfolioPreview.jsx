@@ -110,23 +110,23 @@ const PortfolioPreview = () => {
     // Page 2
     {
       id: 4,
-      title: 'Packaging Design',
-      category: 'Product Packaging, Identity',
-      image: '/images/portfolio/Branding.png',
+      title: 'Print Designs',
+      category: 'Banners, Marketing metrials Etc.',
+      image: '/images/portfolio/Print Design.jpg',
       page: 1
     },
     {
       id: 5,
-      title: 'App Design',
-      category: 'UI/UX, Mobile App',
-      image: '/images/portfolio/Web.jpg',
+      title: 'Production',
+      category: 'Videography, Photoshoots',
+      image: '/images/portfolio/Production.jpg',
       page: 1
     },
     {
       id: 6,
-      title: 'SEO & Performance',
-      category: 'Digital Strategy, Growth',
-      image: '/images/portfolio/Marketing.jpg',
+      title: 'Package Designs',
+      category: 'All type of package designs',
+      image: '/images/portfolio/Packaging.png',
       page: 1
     }
   ];

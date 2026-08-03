@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${menuOpen ? 'navbar-menu-open' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-brand" onClick={closeMenu}>
           Urban <span className="navbar-brand-light">Knots</span>

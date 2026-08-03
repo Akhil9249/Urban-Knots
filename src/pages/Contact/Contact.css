@@ -279,7 +279,6 @@
   border-radius: 9px;
   padding: 10px 10px 10px 31px;
   width: 100%;
-  max-width: 544px;
   height: 80px;
   gap: 10px;
   outline: none;
@@ -449,7 +448,8 @@
 /* Responsive Queries */
 @media (max-width: 991px) {
   .contact-hero {
-    padding: 200px 20px 80px 20px;
+    height: auto;
+    padding: 140px 20px 60px 20px;
     min-height: auto;
   }
 
@@ -486,15 +486,7 @@
   }
 
   .contact-hero-image-wrapper {
-    position: relative;
-    left: -20px;
-    top: 0;
-    transform: none;
-    width: calc(100% + 40px);
-    height: auto;
-    max-width: 500px;
-    margin-bottom: 40px;
-     background: transparent;
+    display: none;
   }
 
   .contact-info-container {

@@ -190,7 +190,7 @@ button,
 
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 5.5rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -200,6 +200,24 @@ button,
   color: #FFFFFF;
   font-size: 0.85rem;
   opacity: 1;
+  cursor: pointer;
+}
+
+.scroll-indicator svg circle {
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.scroll-indicator svg path {
+  transition: stroke 0.3s ease;
+}
+
+.scroll-indicator:hover svg circle {
+  fill: #6C63FF !important;
+  stroke: #6C63FF !important;
+}
+
+.scroll-indicator:hover svg path {
+  stroke: #ffffff !important;
 }
 
 .scroll-indicator span {
@@ -337,45 +355,67 @@ button,
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.nav-arrow:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
 }
 
 .nav-arrow-icon {
-  width: 38px;
-  height: 33px;
+  width: 24px;
+  height: 21px;
   object-fit: contain;
   display: block;
+  transition: filter 0.3s ease;
+}
+
+.nav-arrow:not(:disabled) .nav-arrow-icon {
+  filter: brightness(0);
+}
+
+.nav-arrow:disabled .nav-arrow-icon {
+  filter: none;
 }
 
 .category-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
   gap: 2rem;
+  width: 100%;
+}
+
+.category-grid::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari/Edge */
 }
 
 .vertical-grid {
-  grid-template-columns: repeat(3, 1fr);
-  /* Assuming 3 cols for vertical too, adjust if needed */
+  /* Inherits flex styling from .category-grid */
 }
 
 .grid-image-container {
   background-color: #f3f4f6;
   overflow: hidden;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
 }
 
 .grid-img-container {
-  width: 411px;
-  max-width: 100%;
-  height: 454px;
+  width: calc((100% - 2 * 2rem) / 3);
+  max-width: 411px;
+  aspect-ratio: 411 / 454;
   border-radius: 9px;
-  aspect-ratio: auto;
 }
 
 .grid-video-container {
-  width: 411px;
-  max-width: 100%;
-  height: 731px;
+  width: calc((100% - 2 * 2rem) / 3);
+  max-width: 411px;
+  aspect-ratio: 411 / 731;
   border-radius: 10px;
-  aspect-ratio: auto;
 }
 
 .category-grid-img {
@@ -453,6 +493,23 @@ button,
     padding: 0 1.5rem;
   }
 
+  .hero {
+    height: 500px;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .showcase-intro {
+    padding: 3rem 0 2rem;
+  }
+
   .showcase-intro h2,
   .feature-content h2,
   .category-text h2 {
@@ -460,12 +517,19 @@ button,
   }
 
   .category-grid {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .vertical-grid {
-    grid-template-columns: 1fr;
+  .grid-img-container {
+    width: 85%;
+    max-width: 320px;
+    aspect-ratio: 411 / 454;
+  }
+
+  .grid-video-container {
+    width: 85%;
+    max-width: 320px;
+    aspect-ratio: 411 / 731;
   }
 
   .category-header {
@@ -474,17 +538,25 @@ button,
     gap: 1rem;
   }
 
+  .portfolio-cta-section {
+    padding: 4rem 1.5rem;
+  }
+
   .portfolio-cta-section h2 {
-    font-size: 2.5rem;
+    font-size: 32px;
   }
 
-  .grid-img-container {
-    height: auto;
-    aspect-ratio: 411 / 454;
+  .portfolio-cta-section p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 2rem;
   }
 
-  .grid-video-container {
-    height: auto;
-    aspect-ratio: 411 / 731;
+  br {
+    display: none;
+  }
+
+  .category-text p {
+    white-space: normal !important;
   }
 }

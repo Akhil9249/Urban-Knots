@@ -246,6 +246,7 @@ body {
     font-size: 20px;
     line-height: 100%;
     z-index: 101;
+    transition: color 0.3s ease;
   }
 
   .navbar-brand-light {
@@ -253,70 +254,139 @@ body {
     line-height: 100%;
   }
 
+  /* When menu is open, make brand logo and hamburger toggle black */
+  .navbar-menu-open .navbar-brand,
+  .navbar-menu-open .navbar-brand-light {
+    color: #1A1A1A !important;
+  }
+
   .navbar-toggle {
     display: block;
+    z-index: 101;
+  }
+
+  .navbar-menu-open .navbar-toggle .navbar-hamburger-bar {
+    background-color: #1A1A1A !important;
   }
 
   .navbar-nav {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 320px;
-    max-width: 85%;
-    height: 100vh;
-    background: linear-gradient(135deg, rgba(15, 10, 30, 0.98) 0%, rgba(5, 5, 5, 0.99) 100%);
-    backdrop-filter: blur(16px);
-    border-left: 1px solid rgba(108, 99, 255, 0.2);
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 90vh;
+    background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 48px;
-    padding: 80px 40px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 36px;
+    padding: 120px 24px 40px 24px;
     box-sizing: border-box;
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 100;
+    border-left: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+    backdrop-filter: none;
   }
 
   .navbar-nav.navbar-open {
     right: 0;
   }
 
-
   .navbar-links {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 36px;
     width: 100%;
     height: auto;
   }
 
   .navbar-links a {
-    font-size: 22px;
+    font-size: 26px;
     line-height: 130%;
+    color: #1A1A1A;
+    font-weight: 500;
     transition: color 0.3s ease;
+    padding-bottom: 8px;
   }
 
-  .navbar-links a:hover {
+  .navbar-links a::after {
+    background-color: #6C63FF;
+    height: 3px;
+    bottom: 0;
+  }
+
+  .navbar-links a:hover,
+  .navbar-links a.active {
     color: #6C63FF;
-    opacity: 1;
   }
 
   .navbar-mobile-action {
     display: flex;
     width: 100%;
     justify-content: center;
+    margin-top: 60px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
   }
 
   .navbar-mobile-action .navbar-btn-talk {
-    border-color: rgba(108, 99, 255, 0.4);
-    background-color: rgba(108, 99, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 11px;
+    width: 100%;
+    max-width: 327px;
+    height: 60px;
+    background-color: #6C63FF;
+    color: #FFFFFF !important;
+    border: none;
+    border-radius: 51px;
+    padding: 10px 10px 10px 24px;
+    box-sizing: border-box;
+    font-family: 'Switzer', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
   }
 
-  .navbar-mobile-action .navbar-btn-talk:hover {
-    border-color: #6C63FF;
-    background-color: rgba(108, 99, 255, 0.1);
+  .navbar-mobile-action .navbar-btn-talk:hover,
+  .navbar-mobile-action .navbar-btn-talk:active {
+    background-color: #554CEF;
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+  }
+
+  .navbar-mobile-action .navbar-icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 41px;
+    height: 41px;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-mobile-action .navbar-icon-circle svg {
+    width: 18px;
+    height: 18px;
+    stroke: #FFFFFF;
+    stroke-width: 1.5;
   }
 
   .navbar-action {
@@ -336,25 +406,7 @@ body {
   }
 
   .navbar-links a {
-    font-size: 20px;
-  }
-
-  .navbar-mobile-action .navbar-btn-talk {
-    width: 170px;
-    height: 52px;
-    font-size: 20px;
-    line-height: 26px;
-    padding: 8px 8px 8px 14px;
-  }
-
-  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle {
-    width: 34px;
-    height: 34px;
-  }
-
-  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle svg {
-    width: 14px;
-    height: 14px;
+    font-size: 24px;
   }
 }
 
@@ -371,24 +423,6 @@ body {
   }
 
   .navbar-links a {
-    font-size: 18px;
-  }
-
-  .navbar-mobile-action .navbar-btn-talk {
-    width: 146px;
-    height: 44px;
-    font-size: 16px;
-    line-height: 20px;
-    padding: 6px 6px 6px 12px;
-  }
-
-  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle {
-    width: 30px;
-    height: 30px;
-  }
-
-  .navbar-mobile-action .navbar-btn-talk .navbar-icon-circle svg {
-    width: 12px;
-    height: 12px;
+    font-size: 22px;
   }
 }

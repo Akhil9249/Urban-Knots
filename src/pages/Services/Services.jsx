@@ -119,7 +119,7 @@ const Services = () => {
           <div className="services-hero-content">
             <span className="services-hero-tag">OUR SERVICES</span>
             <h1 className="services-hero-title">
-              Creative Solutions<br />
+              Creative Solutions <br />
               That <span className="services-title-accent">Drive Results</span>
             </h1>
             <p className="services-hero-desc">
@@ -190,12 +190,12 @@ const Services = () => {
         {/* Right Column: Actions (Button & Newsletter) */}
         <div className="services-cta-actions-column">
        
-
+ 
           {/* Newsletter Box */}
           <div className="services-newsletter-box">
             <h3 className="services-newsletter-title">Newsletter</h3>
             <p className="services-newsletter-subtitle">
-              Stay updated with our latest<br />work and insights.
+              Stay updated with our latest <br /> work and insights.
             </p>
             
             <form className="services-newsletter-form" onSubmit={handleSubscribe}>

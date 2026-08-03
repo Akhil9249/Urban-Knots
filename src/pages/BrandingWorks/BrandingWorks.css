@@ -125,7 +125,7 @@
 
 .branding-works-scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 5.5rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -135,6 +135,24 @@
   color: var(--text-light);
   font-size: 0.85rem;
   opacity: 1;
+  cursor: pointer;
+}
+
+.branding-works-scroll-indicator svg circle {
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.branding-works-scroll-indicator svg path {
+  transition: stroke 0.3s ease;
+}
+
+.branding-works-scroll-indicator:hover svg circle {
+  fill: #6C63FF !important;
+  stroke: #6C63FF !important;
+}
+
+.branding-works-scroll-indicator:hover svg path {
+  stroke: #ffffff !important;
 }
 
 .branding-works-scroll-indicator span {
@@ -307,5 +325,22 @@
   .branding-works-grid-3-col, 
   .branding-works-grid-2-col {
     grid-template-columns: 1fr;
+  }
+
+  .branding-works-hero-dark {
+    height: 500px;
+  }
+
+  .branding-works-hero-content h1 {
+    font-size: 38px;
+  }
+
+  .branding-works-hero-content p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  br {
+    display: none;
   }
 }

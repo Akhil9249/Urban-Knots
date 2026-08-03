@@ -49,10 +49,15 @@ export default function BrandingWorks() {
         <div className="branding-works-hero-content">
           <span className="branding-works-subtitle-blue">OUR WORK</span>
           <h1>Branding</h1>
-          <p>Building memorable brands through strategic thinking, purposeful design,<br/>and cohesive visual identities that communicate clearly, connect with<br/>audiences, and stand the test of time.</p>
+          <p>Building memorable brands through strategic thinking, purposeful design, <br/>and cohesive visual identities that communicate clearly, connect with <br/>audiences, and stand the test of time.</p>
         </div>
 
-        <div className="branding-works-scroll-indicator">
+        <div className="branding-works-scroll-indicator" onClick={() => {
+          const projectsSection = document.querySelector('.branding-works-projects-container');
+          if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}>
           <span>Explore Our Work</span>
           <ArrowDown />
         </div>
