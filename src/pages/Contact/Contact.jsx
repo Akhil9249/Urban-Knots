@@ -57,20 +57,22 @@ const Contact = () => {
     e.preventDefault();
     
     try {
+      const params = new URLSearchParams();
+      params.append("_subject", "PROJECT INQUIRY: URBAN KNOTS");
+      params.append("_template", "box");
+      params.append("Full Name", formData.fullName);
+      params.append("Email", formData.email);
+      params.append("Phone", formData.phoneNumber);
+      params.append("Company", formData.company || "N/A");
+      params.append("Project Details", formData.projectDetails);
+
       const response = await fetch("https://formsubmit.co/ajax/urbanknotsllp@gmail.com", {
         method: "POST",
         headers: { 
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
           "Accept": "application/json"
         },
-        body: JSON.stringify({
-          _subject: "New Project Inquiry - Urban Knots",
-          "Full Name": formData.fullName,
-          "Email Address": formData.email,
-          "Phone Number": formData.phoneNumber,
-          "Company Name": formData.company || "N/A",
-          "Project Details": formData.projectDetails
-        })
+        body: params.toString()
       });
       
       if (response.ok) {

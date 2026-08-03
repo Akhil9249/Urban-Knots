@@ -120,7 +120,7 @@ const PortfolioPreview = () => {
       id: 5,
       title: 'Production',
       category: 'Videography, Photoshoots',
-      image: '/images/portfolio/Production.jpg',
+      image: '/images/portfolio/Production.jpeg',
       page: 1
     },
     {

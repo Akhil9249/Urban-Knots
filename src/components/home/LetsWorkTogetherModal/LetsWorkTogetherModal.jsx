@@ -4,7 +4,9 @@ import './LetsWorkTogetherModal.css';
 
 const LetsWorkTogetherModal = () => {
   const [isOpen, setIsOpen] = useState(() => {
-    return !sessionStorage.getItem('letsWorkTogetherModalShown');
+    const submitted = localStorage.getItem('letsWorkTogetherModalSubmitted');
+    const shown = sessionStorage.getItem('letsWorkTogetherModalShown');
+    return !submitted && !shown;
   });
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,21 +28,47 @@ const LetsWorkTogetherModal = () => {
     setIsOpen(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) return;
 
     setIsSubmitting(true);
-    // Simulate API call/subscription
-    setTimeout(() => {
+    try {
+      const params = new URLSearchParams();
+      params.append("_subject", "PROJECT INQUIRY: URBAN KNOTS");
+      params.append("_template", "box");
+      params.append("Full Name", "Modal Newsletter Subscriber");
+      params.append("Email", email);
+      params.append("Phone", "N/A");
+      params.append("Company", "N/A");
+      params.append("Project Details", "Subscribed via the homepage 'Let's Work Together' popup modal.");
+
+      const response = await fetch("https://formsubmit.co/ajax/akhilcv430@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Accept": "application/json"
+        },
+        body: params.toString()
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        localStorage.setItem('letsWorkTogetherModalSubmitted', 'true');
+        
+        // Auto-close modal after successful submission feedback
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 2500);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-      
-      // Auto-close modal after successful submission feedback
-      setTimeout(() => {
-        setIsOpen(false);
-      }, 2500);
-    }, 1000);
+    }
   };
 
   if (!isOpen) return null;
