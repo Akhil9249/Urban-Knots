@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './PortfolioPreview.css';
 
 const ViewAllProjectsIcon = () => (
@@ -132,7 +133,7 @@ const PortfolioPreview = () => {
   ];
 
   return (
-    <section className="portfolio-section">
+    <section className="portfolio-section" id="projects">
       <div className="portfolio-container">
         
         {/* Section Header */}
@@ -145,10 +146,10 @@ const PortfolioPreview = () => {
             <p className="portfolio-header-description">
               Every project is driven by our passion for creativity, strategy, and solving real business challenges. Explore some of our recent work.
             </p>
-            <button className="view-all-projects-btn">
+            <Link to="/branding" className="view-all-projects-btn">
               View All Projects
               <ViewAllProjectsIcon />
-            </button>
+            </Link>
           </div>
         </div>
 

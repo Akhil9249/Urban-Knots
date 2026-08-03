@@ -14,7 +14,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="hero-section">
+    <section className="hero-section" id="hero">
       <div className="hero-content-wrapper">
         
         {/* Left Column: Text Content */}
@@ -30,7 +30,7 @@ const Hero = () => {
           </p>
           
           <div className="hero-buttons">
-            <button className="btn btn-primary">
+            <button className="btn btn-primary" onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=urbanknotsllp@gmail.com', '_blank')}>
               Let's Build Your Brand
               <ArrowRightIcon />
             </button>

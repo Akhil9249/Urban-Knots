@@ -26,6 +26,40 @@ const ArrowDown = () => (
   </svg>
 );
 
+const VideoGridItem = ({ src }) => {
+  const videoRef = React.useRef(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        // Prevent console errors from autoplay policies or fast hovering
+        console.log("Video play request was interrupted or prevented:", err);
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      controls
+      muted
+      loop
+      playsInline
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="category-grid-img"
+      style={{ objectFit: 'cover', width: '100%', height: '100%', display: 'block', cursor: 'pointer' }}
+    />
+  );
+};
+
 // Reusable Component for Image Grid Sections (Print, Packaging, etc.)
 const CategorySection = ({ title, description, images, isVertical = false }) => {
   const gridRef = React.useRef(null);
@@ -94,7 +128,7 @@ const CategorySection = ({ title, description, images, isVertical = false }) => 
           return (
             <div key={index} className={`grid-image-container ${isVideo ? 'grid-video-container' : 'grid-img-container'}`}>
               {isVideo ? (
-                <video src={img} controls muted loop playsInline className="category-grid-img" style={{ objectFit: 'cover', width: '100%', height: '100%', display: 'block' }} />
+                <VideoGridItem src={img} />
               ) : typeof img === 'string' ? (
                 <img src={img} alt={`${title} ${index + 1}`} className="category-grid-img" />
               ) : (

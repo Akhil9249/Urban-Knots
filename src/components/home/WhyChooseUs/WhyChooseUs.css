@@ -52,7 +52,7 @@
   line-height: 1.5;
   color: #666666;
   max-width: 427px;
-  margin: 0 0 32px 0;
+  margin: 0;
 }
 
 /* Button with arrow animation */
@@ -133,10 +133,7 @@
   border: 1px solid transparent;
 }
 
-.why-choose-us-card:hover {
-  background-color: #D6D1FF;
-  border-color: #D6D1FF;
-}
+
 
 /* Card Icon Box */
 .why-choose-us-card-icon {
@@ -152,10 +149,7 @@
   transition: all 0.3s ease;
 }
 
-.why-choose-us-card:hover .why-choose-us-card-icon {
-  background: transparent;
-  color: #6C63FF;
-}
+
 
 .why-choose-us-card-icon img {
   width: 30px;
@@ -224,14 +218,14 @@
   .why-choose-us-subtitle {
     position: absolute;
     left: 0;
-    top: 40px;
+    top: 103px;
     margin: 0;
   }
 
   .why-choose-us-title {
     position: absolute;
     left: 0;
-    top: 77px;
+    top: 140px;
     width: 435px;
     height: 126px;
     margin: 0;
@@ -240,15 +234,8 @@
   .why-choose-us-description {
     position: absolute;
     left: 0;
-    top: 227px;
+    top: 282px;
     max-width: 427px;
-    margin: 0;
-  }
-
-  .why-choose-us-btn {
-    position: absolute;
-    left: 0;
-    top: 307px;
     margin: 0;
   }
 
@@ -265,6 +252,16 @@
   .why-choose-us-card {
     width: 244px;
     height: 111px;
+  }
+
+  .why-choose-us-card:hover {
+    background-color: #D0D0D0;
+    border-color: #D0D0D0;
+  }
+
+  .why-choose-us-card:hover .why-choose-us-card-icon {
+    background: transparent;
+    color: #6C63FF;
   }
 }
 

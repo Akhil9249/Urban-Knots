@@ -6,6 +6,7 @@ import WhyChooseUs from '../../components/home/WhyChooseUs/WhyChooseUs';
 import Process from '../../components/home/Process/Process';
 import TestimonialsFAQ from '../../components/home/Testimonials/TestimonialsFAQ';
 import CTA from '../../components/home/CTA/CTA';
+import LetsWorkTogetherModal from '../../components/home/LetsWorkTogetherModal/LetsWorkTogetherModal';
 
 const Home = () => {
   return (
@@ -17,8 +18,7 @@ const Home = () => {
       <Process />
       <TestimonialsFAQ />
       <CTA />
-
-
+      <LetsWorkTogetherModal />
     </>
   );
 };

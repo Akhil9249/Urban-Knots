@@ -57,7 +57,7 @@ const Contact = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch("https://formsubmit.co/ajax/akhilcv430@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/urbanknotsllp@gmail.com", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -265,7 +265,7 @@ const Contact = () => {
               </p>
             </div>
             <div className="contact-cta-right">
-              <button className="contact-cta-btn" onClick={() => window.scrollTo({ top: document.querySelector('.contact-form-section').offsetTop, behavior: 'smooth' })}>
+              <button className="contact-cta-btn" onClick={() => window.open('https://wa.me/918129195151', '_blank')}>
                 Start Your Project <img src="/images/clients/Vector.png" alt="Arrow" className="contact-cta-btn-icon" />
               </button>
             </div>

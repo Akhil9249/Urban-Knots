@@ -43,7 +43,7 @@ const Navbar = () => {
 
           {/* Mobile Action inside menu drawer */}
           <div className="navbar-mobile-action">
-            <Link to="/contact" className="navbar-btn-talk" onClick={closeMenu}>
+            <a href="https://wa.me/918129195151" target="_blank" rel="noopener noreferrer" className="navbar-btn-talk" onClick={closeMenu}>
               Let's Talk
               <span className="navbar-icon-circle">
                 <svg
@@ -60,13 +60,13 @@ const Navbar = () => {
                   <path d="m12 5 7 7-7 7" />
                 </svg>
               </span>
-            </Link>
+            </a>
           </div>
         </nav>
 
         {/* Desktop Action */}
         <div className="navbar-action">
-          <Link to="/contact" className="navbar-btn-talk">
+          <a href="https://wa.me/918129195151" target="_blank" rel="noopener noreferrer" className="navbar-btn-talk">
             Let's Talk
             <span className="navbar-icon-circle">
               <svg
@@ -83,7 +83,7 @@ const Navbar = () => {
                 <path d="m12 5 7 7-7 7" />
               </svg>
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </header>

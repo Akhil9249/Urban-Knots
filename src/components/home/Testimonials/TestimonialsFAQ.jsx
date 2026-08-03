@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TestimonialsFAQ.css';
-import rohanAvatar from '../../../assets/images/rohan_avatar.png';
+import { User } from 'lucide-react';
 
 // Quote Icon SVG
 const QuoteIcon = () => (
@@ -21,21 +21,18 @@ const TestimonialsFAQ = () => {
     {
       id: 1,
       text: "Urban Knots understood our vision perfectly and transformed it into a professional brand identity. Their creativity and attention to detail exceeded our expectations.",
-      avatar: rohanAvatar,
       name: "Rohan",
       role: "Startup Founder"
     },
     {
       id: 2,
       text: "The team delivered an outstanding website that has boosted our user engagement by 40%. They are strategic, creative, and highly professional.",
-      avatar: rohanAvatar, // Reusing avatar as demo
       name: "Priya",
       role: "Marketing Director"
     },
     {
       id: 3,
       text: "Their design process is completely transparent and collaborative. They turned our complex requirements into an elegant, intuitive interface.",
-      avatar: rohanAvatar,
       name: "Kabir",
       role: "Creative Lead"
     }
@@ -108,7 +105,9 @@ const TestimonialsFAQ = () => {
                       </p>
                     </div>
                     <div className="testimonial-bottom-row">
-                      <img src={t.avatar} alt={t.name} className="testimonial-avatar" />
+                      <div className="testimonial-avatar">
+                        <User size={20} />
+                      </div>
                       <div className="testimonial-meta">
                         <h4 className="testimonial-name">{t.name}</h4>
                         <p className="testimonial-role">{t.role}</p>

@@ -177,7 +177,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="why-choose-us-section" id="why-choose-us">
+    <section className="why-choose-us-section" id="about">
       <div className="why-choose-us-container">
         
         {/* Left Side: Content Column */}
@@ -189,10 +189,6 @@ const WhyChooseUs = () => {
           <p className="why-choose-us-description">
             We don't just create beautiful designs—we build experiences and solutions that help businesses grow.
           </p>
-          <button className="why-choose-us-btn">
-            About Urban Knots
-            <ArrowUpRightIcon />
-          </button>
         </div>
 
         {/* Right Side: Grid Column */}

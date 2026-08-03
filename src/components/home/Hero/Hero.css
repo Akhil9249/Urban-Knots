@@ -1,5 +1,6 @@
 /* Base container styling */
 .hero-section {
+  position: relative;
   background-color: #050505;
   color: #ffffff;
   width: 100%;

@@ -102,7 +102,7 @@ const ServicesPreview = () => {
   ];
 
   return (
-    <section className="service-preview-section">
+    <section className="service-preview-section" id="services">
       <div className="service-preview-container">
 
         {/* Two-Column Section Header */}
@@ -145,9 +145,9 @@ const ServicesPreview = () => {
                 <div className="service-preview-card-divider"></div>
                 <p className="service-preview-card-desc">{service.description}</p>
               </div>
-              <div className="service-preview-card-bottom">
+              {/* <div className="service-preview-card-bottom">
                 <img src="/images/services/Vector.jpg" alt="Arrow" className="service-preview-card-arrow-icon" />
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

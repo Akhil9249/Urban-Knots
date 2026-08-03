@@ -132,8 +132,12 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  object-fit: cover;
-  background-color: #eaeaea;
+  background-color: rgba(108, 99, 255, 0.1);
+  color: #6C63FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .testimonial-meta {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import footerGraphic from '../../../assets/images/Rectangle.png';
 
@@ -41,12 +42,12 @@ const Footer = () => {
         <div className="footer-column links-col">
           <h3 className="footer-col-title">Quick Links</h3>
           <ul className="footer-links-list">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#testimonials-faq">FAQ</a></li>
+            <li><Link to="/#hero">Home</Link></li>
+            <li><Link to="/#about">About</Link></li>
+            <li><Link to="/#services">Services</Link></li>
+            <li><Link to="/#projects">Projects</Link></li>
+            <li><Link to="/#process">Process</Link></li>
+            <li><Link to="/#testimonials-faq">FAQ</Link></li>
           </ul>
         </div>
 
@@ -54,12 +55,12 @@ const Footer = () => {
         <div className="footer-column links-col">
           <h3 className="footer-col-title">Services</h3>
           <ul className="footer-links-list">
-            <li><a href="#services">Branding & Identity</a></li>
-            <li><a href="#services">Creative Design</a></li>
-            <li><a href="#services">Website Development</a></li>
-            <li><a href="#services">UI/UX Design</a></li>
-            <li><a href="#services">Digital Marketing</a></li>
-            <li><a href="#services">Video & Motion Graphics</a></li>
+            <li><Link to="/#services">Branding & Identity</Link></li>
+            <li><Link to="/#services">Creative Design</Link></li>
+            <li><Link to="/#services">Website Development</Link></li>
+            <li><Link to="/#services">UI/UX Design</Link></li>
+            <li><Link to="/#services">Digital Marketing</Link></li>
+            <li><Link to="/#services">Video & Motion Graphics</Link></li>
           </ul>
         </div>
 
@@ -84,7 +85,7 @@ const Footer = () => {
                 <img src="/images/footer/phone.png" alt="Phone" />
               </span>
               <span className="contact-link-text">
-                +91 8281 919 151, +91 8129 195 151
+                +91 8129 195 151, +91 8281 919 151
               </span>
             </li>
 
