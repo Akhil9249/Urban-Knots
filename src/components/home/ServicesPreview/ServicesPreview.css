@@ -254,10 +254,15 @@
   color: #050505;
   margin: 0;
   width: 163px;
-  height: 48px;
+  min-height: 48px;
+  height: auto;
   display: flex;
   align-items: flex-start;
   letter-spacing: 0%;
+}
+
+.service-preview-card-title br {
+  display: block !important;
 }
 
 .service-preview-card-divider {

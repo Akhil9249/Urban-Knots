@@ -35,15 +35,16 @@ const LetsWorkTogetherModal = () => {
     setIsSubmitting(true);
     try {
       const params = new URLSearchParams();
-      params.append("_subject", "PROJECT INQUIRY: URBAN KNOTS");
-      params.append("_template", "box");
-      params.append("Full Name", "Modal Newsletter Subscriber");
-      params.append("Email", email);
-      params.append("Phone", "N/A");
-      params.append("Company", "N/A");
-      params.append("Project Details", "Subscribed via the homepage 'Let's Work Together' popup modal.");
+      params.append("_subject", "Collaboration Inquiry: Urban Knots Modal Subscriber");
+      params.append("_template", "basic");
+      params.append("_replyto", email);
+      
+      params.append("Greeting", "Dear Urban Knots Team,");
+      params.append("Notification", "A user has requested to collaborate and subscribed via the \"Let's Work Together\" modal on the homepage.");
+      params.append("Subscriber Email", email);
+      params.append("Sign-off", "Best regards, Urban Knots Website Integration.");
 
-      const response = await fetch("https://formsubmit.co/ajax/akhilcv430@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/urbanknotsllp@gmail.com", {
         method: "POST",
         headers: { 
           "Content-Type": "application/x-www-form-urlencoded",

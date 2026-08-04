@@ -393,9 +393,7 @@ button,
   display: none; /* Hide scrollbar Chrome/Safari/Edge */
 }
 
-.vertical-grid {
-  /* Inherits flex styling from .category-grid */
-}
+
 
 .grid-image-container {
   background-color: #f3f4f6;
@@ -414,7 +412,7 @@ button,
 .grid-video-container {
   width: calc((100% - 2 * 2rem) / 3);
   max-width: 411px;
-  aspect-ratio: 411 / 731;
+  aspect-ratio: 9 / 13;
   border-radius: 10px;
 }
 

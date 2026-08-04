@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Portfolio.css';
-import productionVideo from '../../assets/videos/Reel 01.mp4';
-import productionVideoTwo from '../../assets/videos/Reel02.mp4';
-import productionVideoThree from '../../assets/videos/Reels 03.mp4';
+// Replace these with your uploaded Cloudinary video URLs
+const productionVideo = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-one.mp4 link
+const productionVideoTwo = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-three.mp4 link
+const productionVideoThree = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-four.mp4 link
+const productionVideoFour = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-five.mp4 link
 import arrowLeftIcon from '../../assets/icons/Vector-left.png';
 import arrowRightIcon from '../../assets/icons/Vector-right.png';
 
@@ -22,7 +24,7 @@ const ArrowLeft = () => (
 
 const ArrowDown = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/><path d="m8 12 4 4 4-4"/><path d="M12 8v8"/>
+    <circle cx="12" cy="12" r="10" /><path d="m8 12 4 4 4-4" /><path d="M12 8v8" />
   </svg>
 );
 
@@ -100,17 +102,17 @@ const CategorySection = ({ title, description, images, isVertical = false }) => 
           <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
         </div>
         <div className="category-nav">
-          <button 
-            className="nav-arrow" 
-            aria-label="Previous" 
+          <button
+            className="nav-arrow"
+            aria-label="Previous"
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
           >
             <img src={arrowLeftIcon} alt="Previous" className="nav-arrow-icon" />
           </button>
-          <button 
-            className="nav-arrow" 
-            aria-label="Next" 
+          <button
+            className="nav-arrow"
+            aria-label="Next"
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
           >
@@ -118,8 +120,8 @@ const CategorySection = ({ title, description, images, isVertical = false }) => 
           </button>
         </div>
       </div>
-      <div 
-        ref={gridRef} 
+      <div
+        ref={gridRef}
         className={`category-grid ${isVertical ? 'vertical-grid' : ''}`}
         onScroll={checkScroll}
       >
@@ -184,7 +186,7 @@ export default function Portfolio() {
     {
       title: "Production",
       description: "High-quality visual storytelling tailored to different communication goals.\nProfessional photography that captures your brand with clarity,\ncreativity, and purpose.",
-      images: [productionVideo, productionVideoTwo, productionVideoThree],
+      images: [productionVideo, productionVideoTwo, productionVideoThree, productionVideoFour],
       isVertical: true
     },
     {
@@ -199,20 +201,23 @@ export default function Portfolio() {
         "/images/clients/photography-six.jpg",
         "/images/clients/photography-seven.jpg",
         "/images/clients/photography-eight.jpg",
-        "/images/clients/photography-nine.jpg"
+        "/images/clients/photography-nine.jpg",
+        "/images/clients/photography-ten.jpeg",
+        "/images/clients/photography-eleven.jpeg",
+
       ]
     }
   ];
 
   return (
     <div className="portfolio-page">
-      
+
       {/* 1. HERO SECTION */}
       <section className="hero">
         <div className="hero-content">
           <span className="subtitle-blue">OUR WORK</span>
           <h1>Our Recent Projects</h1>
-          <p>Every project is an opportunity to solve a problem, build <br/>a brand, and create meaningful digital experiences. <br/>Here's a selection of our recent work.</p>
+          <p>Every project is an opportunity to solve a problem, build <br />a brand, and create meaningful digital experiences. <br />Here's a selection of our recent work.</p>
         </div>
 
         <div className="scroll-indicator" onClick={() => {
@@ -231,7 +236,7 @@ export default function Portfolio() {
         <section className="showcase-intro">
           <span className="subtitle-blue">LATEST WORKS</span>
           <h2>Creative Showcase</h2>
-          <p>Explore a curated collection of work where creativity meets strategy. Every project is thoughtfully <br/>crafted to solve business challenges, build memorable brands, and create meaningful experiences <br/>across digital and print.</p>
+          <p>Explore a curated collection of work where creativity meets strategy. Every project is thoughtfully <br />crafted to solve business challenges, build memorable brands, and create meaningful experiences <br />across digital and print.</p>
         </section>
 
         <section className="brand-identity-feature">
@@ -240,7 +245,7 @@ export default function Portfolio() {
           </div>
           <div className="feature-content">
             <h2>Brand Identity</h2>
-            <p>Strategic brand identities that build recognition, trust, and lasting <br/>connections through distinctive visual systems, consistent messaging <br/>and purposeful design.</p>
+            <p>Strategic brand identities that build recognition, trust, and lasting <br />connections through distinctive visual systems, consistent messaging <br />and purposeful design.</p>
             <Link to="/branding" className="btn-talk btn-solid-talk-dark">
               View All Projects <img src="/images/clients/Vector.png" alt="Arrow" className="btn-talk-icon" />
             </Link>
@@ -249,10 +254,10 @@ export default function Portfolio() {
 
         {/* 3. CATEGORY GRIDS */}
         {categories.map((cat, index) => (
-          <CategorySection 
-            key={index} 
-            title={cat.title} 
-            description={cat.description} 
+          <CategorySection
+            key={index}
+            title={cat.title}
+            description={cat.description}
             images={cat.images}
             isVertical={cat.isVertical}
           />
@@ -262,8 +267,8 @@ export default function Portfolio() {
       {/* 4. CALL TO ACTION */}
       <section className="portfolio-cta-section">
         <span className="subtitle-blue">HAVE A PROJECT IN MIND ?</span>
-        <h2>Ready to Build <br/>Something Amazing?</h2>
-        <p>Whether you're launching a startup, scaling your business, or refreshing your brand, <br/>we're here to create meaningful experiences that leave a lasting impression.</p>
+        <h2>Ready to Build <br />Something Amazing?</h2>
+        <p>Whether you're launching a startup, scaling your business, or refreshing your brand, <br />we're here to create meaningful experiences that leave a lasting impression.</p>
         <Link to="/contact" className="btn-outline-dark">
           Start Your Project <ArrowRight />
         </Link>
