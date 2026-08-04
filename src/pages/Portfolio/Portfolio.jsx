@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Portfolio.css';
-// Replace these with your uploaded Cloudinary video URLs
-const productionVideo = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-one.mp4 link
-const productionVideoTwo = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-three.mp4 link
-const productionVideoThree = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-four.mp4 link
-const productionVideoFour = "https://res.cloudinary.com/demo/video/upload/v1625000000/sample.mp4"; // Replace with your Reel-five.mp4 link
+// Cloudinary Video Embed URLs
+const productionVideo = "https://player.cloudinary.com/embed/?cloud_name=g40pmnhj&public_id=Reel-one_xxqvqk";
+const productionVideoTwo = "https://player.cloudinary.com/embed/?cloud_name=g40pmnhj&public_id=Reel-three_eyq0ud";
 import arrowLeftIcon from '../../assets/icons/Vector-left.png';
 import arrowRightIcon from '../../assets/icons/Vector-right.png';
 
@@ -45,6 +43,20 @@ const VideoGridItem = ({ src }) => {
       videoRef.current.pause();
     }
   };
+
+  const isEmbed = src.includes('embed') || src.includes('player.cloudinary.com');
+
+  if (isEmbed) {
+    return (
+      <iframe
+        src={src}
+        className="category-grid-img"
+        style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        allowFullScreen
+      />
+    );
+  }
 
   return (
     <video
@@ -186,7 +198,7 @@ export default function Portfolio() {
     {
       title: "Production",
       description: "High-quality visual storytelling tailored to different communication goals.\nProfessional photography that captures your brand with clarity,\ncreativity, and purpose.",
-      images: [productionVideo, productionVideoTwo, productionVideoThree, productionVideoFour],
+      images: [productionVideo, productionVideoTwo],
       isVertical: true
     },
     {
